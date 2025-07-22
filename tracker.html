@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrimeEye Admin - Tracker</title>
+<style>
+body {margin:0; font-family:'Segoe UI',sans-serif; background:#f5f6fa;}
+.sidebar {position:fixed; top:0; left:0; width:200px; height:100vh; background:#1f1f4b; color:#fff; display:flex; flex-direction:column; align-items:center; padding-top:20px;}
+.sidebar .logo {font-size:1.2rem; font-weight:700; margin-bottom:20px;}
+.sidebar nav ul {list-style:none; padding:0; width:100%;}
+.sidebar nav ul li {padding:12px 20px; cursor:pointer; display:flex; align-items:center; gap:10px; transition:background 0.3s;}
+.sidebar nav ul li.active, .sidebar nav ul li:hover {background:#2c2c7b;}
+.main-content {margin-left:200px; padding:20px;}
+header {display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;}
+.notification-icon {font-size:1.2rem; cursor:pointer;}
+.tracker-grid {display:flex; flex-wrap:wrap; gap:20px;}
+.tracker-personnel-list {flex:1; min-width:220px; max-width:300px; display:flex; flex-direction:column; gap:15px;}
+.personnel-card {background:#fff; border-radius:10px; padding:15px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+.personnel-card h4 {font-size:0.9rem; color:#888; margin-bottom:8px;}
+.personnel-info {display:flex; gap:10px; align-items:center;}
+.avatar {font-size:2rem;}
+.name {font-weight:600; font-size:1rem;}
+.id {font-size:0.85rem; color:#555;}
+.status-badge {font-size:0.75rem; padding:2px 6px; border-radius:6px; color:#fff; margin-top:4px; display:inline-block;}
+.status-badge.on-duty {background:#ffc107; color:#333;}
+.zone {font-size:0.8rem; color:#555; margin-top:4px;}
+.tracker-detail {flex:2; min-width:300px; background:#fff; border-radius:10px; padding:20px; box-shadow:0 2px 6px rgba(0,0,0,0.1); display:flex; flex-direction:column; gap:15px;}
+.tracker-header {display:flex; justify-content:space-between; align-items:center;}
+.tracker-header h2 {font-size:1.2rem;}
+.alert-btn {background:#ffc107; border:none; padding:8px 12px; border-radius:6px; font-weight:600; cursor:pointer;}
+.check-in-box {display:flex; justify-content:space-between; align-items:center; background:#f1f1f1; border-radius:8px; padding:10px;}
+.check-in-time {text-align:center;}
+.check-in-time .time {font-size:1.5rem; font-weight:700;}
+.check-in-time .ago {font-size:0.8rem; color:#777;}
+.timeslot {font-size:0.85rem; color:#555; text-align:right;}
+.zone-stats {display:flex; justify-content:space-between; font-size:0.85rem; color:#555; background:#fafafa; padding:10px; border-radius:6px;}
+.map-placeholder {background:#ddd; height:300px; border-radius:10px; display:flex; justify-content:center; align-items:center; color:#555; font-size:1rem;}
+</style>
+</head>
+<body>
+<div class="sidebar">
+  <div class="logo">👁️ PrimeEye</div>
+  <nav>
+    <ul>
+      <li><span>🏠</span> Home</li>
+      <li class="active"><span>🗺️</span> Tracker</li>
+      <li><span>👮</span> Personnel</li>
+      <li><span>📄</span> Reports</li>
+      <li><span>⚙️</span> Settings</li>
+      <li><span>🚪</span> Logout</li>
+    </ul>
+  </nav>
+</div>
+<div class="main-content">
+  <header>
+    <h1>Tracker</h1>
+    <div class="notification-icon">🔔</div>
+  </header>
+  <div class="tracker-grid">
+    <!-- Personnel List -->
+    <div class="tracker-personnel-list">
+      <div class="personnel-card">
+        <h4>SECTOR 1</h4>
+        <div class="personnel-info">
+          <div class="avatar">👤</div>
+          <div>
+            <div class="name">John Wick</div>
+            <div class="id">SEC-43562</div>
+            <div class="status-badge on-duty">ON DUTY</div>
+            <div class="zone">Average In-Zone: 80%</div>
+          </div>
+        </div>
+      </div>
+      <div class="personnel-card">
+        <h4>SECTOR 1</h4>
+        <div class="personnel-info">
+          <div class="avatar">👤</div>
+          <div>
+            <div class="name">Horrid Henry</div>
+            <div class="id">SEC-62672</div>
+            <div class="status-badge on-duty">ON DUTY</div>
+            <div class="zone">Average In-Zone: 50%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Tracker Detail -->
+    <div class="tracker-detail">
+      <div class="tracker-header">
+        <h2>SECTOR 1</h2>
+        <button class="alert-btn">Alert ⚠️</button>
+      </div>
+      <div class="check-in-box">
+        <div class="check-in-time">
+          <div>Check-in time</div>
+          <div class="time">04:10</div>
+          <div class="ago">5 mins ago</div>
+        </div>
+        <div class="timeslot">
+          <div>Starts: 12:00 AM</div>
+          <div>Ends: 1:00 AM</div>
+        </div>
+      </div>
+      <div class="zone-stats">
+        <div>Avg In-zone: 0%</div>
+        <div>Avg Mid-zone: 0%</div>
+        <div>Avg Out-zone: 0%</div>
+        <div>Avg Disconnect: 0%</div>
+      </div>
+      <div id="map" class="map-placeholder">Google Map will display here.</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrimeEye Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="admin-dashboard">
+    <div class="sidebar">
+        <div class="logo">👁️ PrimeEye</div>
+        <nav>
+            <ul>
+                <li class="active"><span>🏠</span> Home</li>
+                <li><span>🗺️</span> Tracker</li>
+                <li><span>👮</span> Personnel</li>
+                <li><span>📄</span> Reports</li>
+                <li><span>⚙️</span> Settings</li>
+                <li><span>🚪</span> Logout</li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Overview</h1>
+            <div class="notification-icon">🔔</div>
+        </header>
+        <section class="dashboard-cards">
+            <div class="card">
+                <h3>Tracker</h3>
+                <p>Real-time location and status tracking of personnel for effective monitoring and reporting.</p>
+            </div>
+            <div class="card">
+                <h3>Personnel</h3>
+                <p>Manage and monitor personnel assignments, shifts, and check-in statuses efficiently.</p>
+            </div>
+            <div class="card">
+                <h3>Reports</h3>
+                <p>Generate and view detailed reports on personnel activities and system logs for accountability.</p>
+            </div>
+            <div class="card">
+                <h3>Settings</h3>
+                <p>Customize system preferences, security settings, and notification configurations easily.</p>
+            </div>
+        </section>
+        <section class="map-section">
+            <h2>Live Tracker Map</h2>
+            <div id="map" class="map-placeholder">Google Map will display here.</div>
+        </section>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

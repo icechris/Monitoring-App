@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrimeEye Admin Login</title>
+    <link rel="stylesheet" href="admin_login.css" />
+</head>
+<body class="admin-login">
+    <div class="login-container">
+        <div class="login-left">
+          <div class="branding">
+  <img src="logo.png" alt="PrimeEye Logo" class="logo-img">
+  <h1>PrimeEye Tracker</h1>
+  <p class="tagline">Campus Security Monitoring</p>
+  <p class="feature">Real-time personnel tracking, live alerts, and detailed reports — all in one smart dashboard.</p>
+</div>
+
+        </div>
+        <div class="login-right">
+            <form id="adminLoginForm" class="login-form">
+                <h2>Log in</h2>
+                <p>Login with your admin credentials</p>
+                <div class="form-group">
+                    <label for="adminName">Admin name</label>
+                    <input type="text" id="adminName" placeholder="eg. John Admin" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="at least 8 characters" required />
+                </div>
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="keepSignedIn" />
+                    <label for="keepSignedIn">Keep me signed in</label>
+                </div>
+                <button type="submit" class="btn login-btn">Login</button>
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </form>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

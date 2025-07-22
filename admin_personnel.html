@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>PrimeEye Admin - Personnel</title>
+    <link rel="stylesheet" href="admin_personnel.css" />
+</head>
+<body class="admin-dashboard">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">👁️ PrimeEye</div>
+        <nav>
+            <ul>
+                <li><span>🏠</span> Home</li>
+                <li><span>🗺️</span> Tracker</li>
+                <li class="active"><span>👮</span> Personnel</li>
+                <li><span>📄</span> Reports</li>
+                <li><span>⚙️</span> Settings</li>
+                <li><span>🚪</span> Logout</li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <h1>Personnels</h1>
+            <div id="notificationIcon" class="notification-icon">🔔</div>
+        </header>
+
+        <div class="personnel-grid">
+            <!-- Personnel List -->
+            <div class="personnel-list-section">
+                <button id="addUserBtn" class="btn primary">➕ Add User</button>
+                <input type="text" placeholder="Search Personnel..." class="search-input" />
+                
+                <div class="personnel-list">
+                    <!-- Sample personnel cards -->
+                    <div class="personnel-card">
+                        <div class="avatar">👤</div>
+                        <div class="info">
+                            <div class="name">Connor Rick Myles</div>
+                            <div class="id">SEC-992547</div>
+                            <div class="shift">Apps Lab | <strong>2:00 am - 1:00 pm</strong></div>
+                        </div>
+                        <div class="actions">
+                            <button class="edit-btn">✏️</button>
+                            <button class="delete-btn">🗑️</button>
+                        </div>
+                    </div>
+                    <!-- Repeat cards dynamically -->
+                </div>
+            </div>
+
+            <!-- Outpost Management -->
+            <div class="outpost-section">
+                <div class="outpost-header">
+                    <h3>Personnel OutPosts</h3>
+                    <button id="addPostBtn" class="btn yellow">📍 Add Post</button>
+                </div>
+                <div class="outpost-list">
+                    <!-- Sample Outpost Card -->
+                    <div class="outpost-card">
+                        <div class="outpost-title">Jude</div>
+                        <div class="coordinates">
+                            <span>Lng: -2.3...</span> | <span>Lat: 7.35...</span>
+                        </div>
+                        <button class="remove-outpost-btn">❌</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add User Modal -->
+    <div id="addUserModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" data-close="addUserModal">✖️</span>
+            <h2>Add User</h2>
+            <form id="addUserForm">
+                <input type="text" placeholder="Full Name" required />
+                <div class="input-group">
+                    <input type="text" placeholder="ID Code" required />
+                    <button type="button" class="generate-btn">Generate</button>
+                </div>
+                <div class="input-group">
+                    <input type="text" placeholder="Personnel Code" required />
+                    <button type="button" class="generate-btn">Generate</button>
+                </div>
+                <div class="time-inputs">
+                    <input type="time" required />
+                    <input type="time" required />
+                </div>
+                <select required>
+                    <option value="">Select Post Location</option>
+                    <option value="Apps Lab">Apps Lab</option>
+                    <option value="Jude">Jude</option>
+                </select>
+                <button type="submit" class="btn yellow">💾 Save</button>
+            </form>
+            
+        </div>
+
+        
+    </div>
+
+    <!-- Edit User Modal (structure same as Add User) -->
+    <div id="editUserModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" data-close="editUserModal">✖️</span>
+            <h2>Edit User</h2>
+            <form id="editUserForm">
+                <input type="text" placeholder="Full Name" required />
+                <div class="input-group">
+                    <input type="text" placeholder="ID Code" required />
+                    <button type="button" class="generate-btn">Generate</button>
+                </div>
+                <div class="input-group">
+                    <input type="text" placeholder="Personnel Code" required />
+                    <button type="button" class="generate-btn">Generate</button>
+                </div>
+                <div class="time-inputs">
+                    <input type="time" required />
+                    <input type="time" required />
+                </div>
+                <select required>
+                    <option value="">Select Post Location</option>
+                    <option value="Apps Lab">Apps Lab</option>
+                    <option value="Jude">Jude</option>
+                </select>
+                <button type="submit" class="btn yellow">💾 Save</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="addPostModal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal" data-close="addPostModal">✖️</span>
+        <h2>Add Post</h2>
+        <form id="addPostForm">
+            <input type="text" placeholder="Post Name" required />
+            <input type="text" placeholder="Longitude" required />
+            <input type="text" placeholder="Latitude" required />
+            <button type="submit" class="btn yellow">💾 Save Post</button>
+        </form>
+    </div>
+</div>
+
+    <!-- Notifications Drawer -->
+    <div id="notificationDrawer" class="notification-drawer hidden">
+         <button class="close-notification-drawer">✖️</button>
+        <h3>Notifications</h3>
+        <ul class="notification-list">
+            <li><strong>Reggie Hue</strong> - Hello (2 days ago)</li>
+            <li><strong>Reggie Hue</strong> - Here to go (2 days ago)</li>
+            <li><strong>Reggie Hue</strong> - Test message (2 days ago)</li>
+        </ul>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

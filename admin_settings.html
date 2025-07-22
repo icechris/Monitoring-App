@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>PrimeEye Admin - Settings</title>
+    <link rel="stylesheet" href="admin_settings.css" />
+</head>
+<body class="admin-dashboard">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">👁️ PrimeEye</div>
+        <nav>
+            <ul>
+                <li><span>🏠</span> Home</li>
+                <li><span>🗺️</span> Tracker</li>
+                <li><span>👮</span> Personnel</li>
+                <li><span>📄</span> Reports</li>
+                <li class="active"><span>⚙️</span> Settings</li>
+                <li><span>🚪</span> Logout</li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <h1>Settings</h1>
+            <div id="notificationIcon" class="notification-icon">🔔</div>
+        </header>
+
+        <div class="settings-grid">
+
+            <!-- Welcome Card -->
+            <div class="welcome-card">
+                <img src="https://assets6.lottiefiles.com/packages/lf20_h4th9ofg.json" alt="Settings Illustration" class="settings-img"/>
+                <h2>Welcome!</h2>
+                <p>Administrator</p>
+                <button class="btn logout-btn">🔓 Logout</button>
+            </div>
+
+            <!-- Stats Card -->
+            <div class="stats-card">
+                <h3>Stats</h3>
+                <div class="stats-values">
+                    <div>
+                        <h2>0</h2>
+                        <p>Personnels</p>
+                    </div>
+                    <div>
+                        <h2>0</h2>
+                        <p>On Duty</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Change Password Card -->
+            <div class="change-password-card">
+                <h3>Change Password</h3>
+                <form id="changePasswordForm">
+                    <input type="password" placeholder="Type old password" required />
+                    <input type="password" placeholder="Create new password" required />
+                    <input type="password" placeholder="Confirm new password" required />
+                    <button type="submit" class="btn yellow">💾 Save</button>
+                </form>
+            </div>
+
+            <!-- Misc Settings -->
+            <div class="misc-settings-card">
+                <h3>Misc</h3>
+                <div class="misc-setting">
+                    <label>Auto Login</label>
+                    <input type="checkbox" />
+                </div>
+                <div class="misc-setting">
+                    <label>Show Notifications</label>
+                    <input type="checkbox" />
+                </div>
+                <div class="misc-setting">
+                    <label>Play Notification Sound</label>
+                    <input type="checkbox" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Notifications Drawer -->
+    <div id="notificationDrawer" class="notification-drawer hidden">
+        <button class="close-notification-drawer">✖️</button>
+        <h3>Notifications</h3>
+        <ul class="notification-list">
+            <li><strong>Reggie Hue</strong> - Hello (2 days ago)</li>
+        </ul>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
