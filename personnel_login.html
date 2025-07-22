@@ -4,21 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personnel Login - PrimeEye</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body class="personnel-login">
-    <div class="app-header">
-        👮 PrimeEye Tracker
-    </div>
-    <div class="card">
-        <h2>🔐 Personnel Login</h2>
-        <form id="loginForm">
-            <input ty<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrimeEye Tracker - Personnel</title>
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -46,7 +31,9 @@
             color: white;
             animation: fadeIn 1s ease;
             z-index: 2;
-            padding: 0 20px;
+            padding: 20px;
+            width: 81%;
+            max-width: 350px;
         }
 
         @keyframes fadeIn {
@@ -59,14 +46,24 @@
             margin-bottom: 10px;
         }
 
-        h1 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
         }
 
-        p {
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        input {
+            padding: 12px 14px;
+            border: none;
+            /* border-radius: 25px; */
             font-size: 1rem;
-            margin-bottom: 30px;
+            outline: none;
+            width: 100%;
         }
 
         .btn {
@@ -79,8 +76,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s, transform 0.2s;
-            width: 80%;
-            max-width: 300px;
+            width: 100%;
         }
 
         .btn:hover {
@@ -90,15 +86,30 @@
         .btn:active {
             transform: scale(0.97);
         }
+
+        .error {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
     </style>
 </head>
 <body>
     <div class="overlay"></div>
     <div class="content">
-        <div class="logo">👮</div>
-        <h1>PrimeEye Tracker</h1>
-        <p>Welcome to the Personnel Portal</p>
-        <button onclick="window.location.href='personnel_login.html'" class="btn">🚪 Proceed to Login</button>
+        <div class="logo">🔐</div>
+        <h2>Personnel Login</h2>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <p id="error" class="error"></p>
     </div>
+
+    <!-- Firebase & app.js -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
