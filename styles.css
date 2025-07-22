@@ -1,0 +1,208 @@
+/* personnel.css - clean, responsive, scoped */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.personnel-home,
+body.personnel-login {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-header {
+    background: #007bff;
+    color: white;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.card {
+    background: white;
+    padding: 25px 20px;
+    border-radius: 14px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    margin-top: 20px;
+    overflow-y: auto;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+p {
+    color: #555;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.btn {
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn.primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn.primary:hover {
+    background: #0069d9;
+}
+
+.btn.success {
+    background: #28a745;
+    color: white;
+}
+
+.btn.success:hover {
+    background: #218838;
+}
+
+.btn.danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn.danger:hover {
+    background: #c82333;
+}
+
+.btn.secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn.secondary:hover {
+    background: #5a6268;
+}
+
+.status {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #dc3545;
+}
+
+.status.active {
+    color: #28a745;
+}
+
+.timer {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* Mobile app-like adjustments */
+@media (max-width: 600px) {
+    .card {
+        width: 100%;
+        height: calc(100vh - 60px);
+        border-radius: 0;
+        margin-top: 0;
+        padding: 20px 15px;
+    }
+
+    h1, h2 {
+        font-size: 1.3rem;
+    }
+
+    .btn {
+        font-size: 1.1rem;
+        padding: 16px;
+    }
+}
+
+
+.messages-container {
+    max-height: 250px;
+    overflow-y: auto;
+    background: #f0f2f5;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.message {
+    background: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.message.admin {
+    background: #d1ecf1;
+}
+
+.message.you {
+    background: #d4edda;
+}
+
+.message-input {
+    display: flex;
+    gap: 8px;
+}
+
+.message-input input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+

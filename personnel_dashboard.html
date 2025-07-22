@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personnel Dashboard - PrimeEye</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body.personnel-dashboard {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f8fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .app-header {
+            background: #007bff;
+            color: white;
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .notification-icon {
+            position: absolute;
+            right: 20px;
+            cursor: pointer;
+            font-size: 1.4rem;
+        }
+
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        .card {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 14px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .status {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #dc3545;
+        }
+
+        .status.active {
+            color: #28a745;
+        }
+
+        .timer {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn.success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn.danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn.secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        /* Notification Modal */
+        .notification-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            padding-top: 80px;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .notification-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .notification-content {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            max-height: 80%;
+            border-radius: 12px;
+            padding: 20px;
+            overflow-y: auto;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .notifications-container {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+
+        .notification {
+            background: #f8f9fa;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .notification.unread {
+            border-left: 4px solid #007bff;
+        }
+
+        .notification.read {
+            opacity: 0.85;
+        }
+
+        .notification button {
+            margin-top: 6px;
+            padding: 6px 10px;
+            font-size: 0.85rem;
+            border: none;
+            border-radius: 6px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        .notification button:hover {
+            background: #0069d9;
+        }
+    </style>
+</head>
+<body class="personnel-dashboard">
+    <div class="app-header">
+        👮 PrimeEye Tracker
+        <div id="notificationIcon" class="notification-icon" tabindex="0">
+            🔔
+            <span id="notificationBadge" class="badge">0</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>On Duty Dashboard</h2>
+        <p id="status" class="status">🟥 Status: Not Checked In</p>
+        <p id="timer" class="timer">⏳ Shift Time Remaining: --:--:--</p>
+        <div class="button-group">
+            <button id="checkInBtn" class="btn success">✅ Check In</button>
+            <button id="checkOutBtn" class="btn danger" disabled>🚪 Check Out</button>
+        </div>
+        <button id="logoutBtn" class="btn secondary">🔓 Logout</button>
+    </div>
+
+    <!-- Notification Modal -->
+    <div id="notificationModal" class="notification-modal">
+        <div class="notification-content">
+            <h3>📢 Notifications</h3>
+            <div id="notificationsContainer" class="notifications-container">
+                <!-- Notifications will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <script>
+        const notificationIcon = document.getElementById('notificationIcon');
+        const notificationModal = document.getElementById('notificationModal');
+
+        // Toggle modal open/close
+        notificationIcon.addEventListener('click', () => {
+            notificationModal.classList.toggle('active');
+        });
+
+        // Close modal when clicking outside the content
+        notificationModal.addEventListener('click', (e) => {
+            if (e.target === notificationModal) {
+                notificationModal.classList.remove('active');
+            }
+        });
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
